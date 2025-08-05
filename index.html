@@ -494,17 +494,19 @@
     <div class="container">
       <h2 class="text-center mb-4">Book Your Demo </h2>
       
-      <form id="demoForm" onsubmit="submitToSheet(event)" class="mx-auto" style="max-width: 600px;">
+     <form id="demoForm" class="mx-auto" style="max-width: 600px;">
   <input type="text" name="name" class="form-control" placeholder="Your Name" autocomplete="name" required />
   <input type="email" name="email" class="form-control" placeholder="Your Email" autocomplete="email" required />
   <input type="text" name="whatsapp" class="form-control" placeholder="WhatsApp Number" autocomplete="tel" />
   <input type="url" name="product" class="form-control" placeholder="Product Link" autocomplete="url" />
+
   <label class="mt-3 mb-2">Which service are you interested in?</label>
   <select name="tier" class="form-control mb-3" autocomplete="off" required>
-    <option value="Starter">Starter (₹299 / $4.99)</option>
-    <option value="Professional">Professional (₹499 / $8.99)</option>
-    <option value="Enterprise">Enterprise (₹999 / $16.99)</option>
+    <option value="Starter">Starter</option>
+    <option value="Professional">Professional</option>
+    <option value="Enterprise">Enterprise</option>
   </select>
+
   <button type="submit" class="btn btn-dark btn-lg w-100">Submit</button>
 </form>
 
@@ -697,13 +699,17 @@
         });
         </script>
 <script>
-  function submitToSheet(e) {
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("demoForm");
+
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
-      console.log("form is submited")
-    const form = document.getElementById('demoForm');
+
+    console.log("🚀 Form submitted!");
+
     const data = Object.fromEntries(new FormData(form).entries());
 
-    fetch("https://script.google.com/macros/s/AKfycbwfJNPX5GVQfM7_Hew_KXrpiXvQJ2DMSqOatehy8GkFZmtMsteuokeQo4ladltRSgCn/exec", {
+    fetch("https://script.google.com/macros/s/YOUR_DEPLOYED_SCRIPT_ID/exec", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -712,11 +718,16 @@
     })
     .then(res => res.text())
     .then(msg => {
-      alert("✅ Demo booked! You’ll hear from us shortly.");
+      console.log("✅ Server response:", msg);
+      alert("✅ Demo booked!");
       form.reset();
     })
-    .catch(err => alert("❌ Error: " + err.message));
-  }
+    .catch(err => {
+      console.error("❌ Submission error:", err);
+      alert("❌ Something went wrong.");
+    });
+  });
+});
 </script>
 
 
