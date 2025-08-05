@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We Monitor Your Reviews 24/7</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-brown: #8B4513;
+            --dark-brown: #5D2F0A;
+            --light-brown: #D2B48C;
+            --accent: #CD853F;
+            --text-dark: #2C1810;
+            --text-light: #F5F5DC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-brown) 0%, var(--primary-brown) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C416,160,544,128,672,122.7C800,117,928,139,1056,154.7C1184,171,1312,181,1360,186.7L1408,192L1408,320L1360,320C1312,320,1216,320,1056,320C896,320,768,320,640,320C512,320,384,320,256,320C128,320,64,320,0,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+
+        .tagline {
+            color: var(--light-brown);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .slide-in {
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-brown), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Pricing Cards */
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .pricing-card.most-popular {
+            border: 2px solid var(--accent);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.most-popular::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-brown);
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* How It Works */
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-brown);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--dark-brown) 0%, var(--primary-brown) 100%);
+            padding: 5rem 0;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .pricing-card.most-popular {
+                transform: scale(1);
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--light-brown);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Image Styling */
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        /* Benefit List */
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefit-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .benefit-list li:last-child {
+            border-bottom: none;
+        }
+
+        .benefit-list li i {
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+        body {
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+
+    .hero {
+      background: linear-gradient(135deg, #5D2F0A, #8B4513);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-content {
+      z-index: 2;
+    }
+    .form-control {
+      margin-bottom: 10px;
+    }
+    .launch-btn {
+      position: relative;
+    }
+    .launch-btn small {
+      display: block;
+      font-size: 0.8rem;
+      color: #888;
+    }
+  
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: rgba(93, 47, 10, 0.95); backdrop-filter: blur(10px);">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div class="logo">
+                    <i class="fas fa-tie"></i>
+                    <img src="photo.png" alt="Logo" style="height: 80px; margin-left: 10px;">
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#cta">Get Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6 hero-content">
+                    
+                    <h1 class="text-white mb-4 slide-in" data-aos="fade-right" data-aos-delay="100">
+                        We Monitor Your Reviews 24/7
+                    </h1>
+                    <p class="tagline slide-in" data-aos="fade-right" data-aos-delay="200">
+                        Never miss a customer review - we work around the clock so you don't have to
+                    </p>
+                    <div class="slide-in" data-aos="fade-right" data-aos-delay="300">
+                        
+                        <button class="btn btn-outline-light btn-lg">Watch Demo</button>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Review Monitoring" 
+                         class="hero-image floating">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Pricing Section -->
+<section id="pricing" class="py-5">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="display-5">Choose Your Plan</h2>
+            <p class="lead text-muted">Simple pricing for businesses of all sizes</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Starter Plan -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="pricing-card">
+                    <h3 class="text-center mb-4">Starter</h3>
+                    <div class="text-center mb-4">
+                        <div class="price">₹299<span>/month</span></div>
+                    </div>
+                    <ul class="benefit-list mb-4">
+                        <li><i class="fas fa-check text-success me-2"></i>We monitor your reviews 24/7</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Instant WhatsApp alerts</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Basic review tracking</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Daily summary reports</li>
+                        <li><i class="fas fa-times text-danger me-2"></i>Competitor tracking</li>
+                        <li><i class="fas fa-times text-danger me-2"></i>Content creation</li>
+                    </ul>
+                    <div class="text-center">
+                        <button class="btn btn-outline-primary launch-btn"
+                        onclick="document.getElementById('demo-booking').scrollIntoView({behavior:'smooth'})">
+                        Book Demo
+                        <small>Launches Aug 5</small>  <!-- adjust date per tier/context -->
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Plan -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="pricing-card">
+                    <h3 class="text-center mb-4">Professional</h3>
+                    <div class="text-center mb-4">
+                        <div class="price">₹499<span>/month</span></div>
+                    </div>
+                    <ul class="benefit-list mb-4">
+                        <li><i class="fas fa-check text-success me-2"></i>Everything in Starter</li>
+                        <li><i class="fas fa-check text-success me-2"></i>We track your competitors</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Detailed competitor reports</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Weekly strategy calls</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Custom response templates</li>
+                        <li><i class="fas fa-times text-danger me-2"></i>Content creation</li>
+                    </ul>
+                    <div class="text-center">
+                        <button class="btn btn-outline-primary launch-btn"
+                          onclick="document.getElementById('demo-booking').scrollIntoView({behavior:'smooth'})">
+                          Book Demo
+                        <small>Launches Aug 6</small>  <!-- adjust date per tier/context -->
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enterprise Plan (MOST POPULAR) -->
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="pricing-card most-popular">
+                    <h3 class="text-center mb-4">Enterprise</h3>
+                    <div class="text-center mb-4">
+                        <div class="price">₹999<span>/month</span></div>
+                    </div>
+                    <ul class="benefit-list mb-4">
+                        <li><i class="fas fa-check text-success me-2"></i>Everything in Professional</li>
+                        <li><i class="fas fa-check text-success me-2"></i>We create content from reviews</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Batch quality monitoring</li>
+                        <li><i class="fas fa-check text-success me-2"></i>API access for developers</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Priority support 24/7</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Custom branding options</li>
+                    </ul>
+                    <div class="text-center">
+                        <button class="btn btn-outline-primary launch-btn"
+                        onclick="document.getElementById('demo-booking').scrollIntoView({behavior:'smooth'})">
+                        Book Demo
+                        <small>Launches Aug 8</small>  <!-- adjust date per tier/context -->
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ 
+
+      <div class="row g-4 mt-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Starter</h5>
+              <p class="card-text">Basic monitoring, instant alerts, and daily summaries.</p>
+              <button class="btn btn-outline-primary launch-btn" onclick="document.getElementById('demo-booking').scrollIntoView({behavior: 'smooth'})">
+                Book Demo
+                <small>Launches Aug 6</small>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Professional</h5>
+              <p class="card-text">Includes competitor tracking and strategy suggestions.</p>
+              <button class="btn btn-outline-secondary launch-btn" onclick="document.getElementById('demo-booking').scrollIntoView({behavior: 'smooth'})">
+                Book Demo
+                <small>Launches Aug 7</small>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 border border-warning">
+            <div class="card-body">
+              <h5 class="card-title">Enterprise <span class="badge bg-warning text-dark">Most Powerful</span></h5>
+              <p class="card-text">Advanced AI + content creation + API access and branding.</p>
+              <button class="btn btn-warning text-white launch-btn" onclick="document.getElementById('demo-booking').scrollIntoView({behavior: 'smooth'})">
+                Book Demo
+                <small>Launches Aug 8</small>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- Demo Booking Form -->
+  <section id="demo-booking" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Book Your Demo </h2>
+      
+      <form id="demoForm" onsubmit="submitToSheet(event)" class="mx-auto" style="max-width: 600px;">
+
+        <input type="text" name="name" class="form-control" placeholder="Your Name" required />
+        <input type="email" name="email" class="form-control" placeholder="Your Email" required />
+        <input type="text" name="whatsapp" class="form-control" placeholder="WhatsApp Number (optional)" />
+        <input type="url" name="product" class="form-control" placeholder="Product Link (Amazon, Etsy, etc.)" />
+
+        <label class="mt-3 mb-2">Which service are you interested in?</label>
+        <select name="tier" class="form-control mb-3" required>
+          <option value="Starter">Starter (₹299 / $4.99)</option>
+          <option value="Professional">Professional (₹499 / $8.99)</option>
+          <option value="Enterprise">Enterprise (₹999 / $16.99)</option>
+        </select>
+
+        
+        <button type="submit" class="btn btn-dark btn-lg w-100">Submit</button>
+      </form>
+      
+    </div>
+  </section>
+
+
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5">How It Works</h2>
+                <p class="lead text-muted">Simple setup, powerful results in minutes</p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h5>Connect Your Platforms</h5>
+                        <p>We connect to your review platforms in just 2 clicks</p>
+                        <div class="loader mt-3"></div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h5>We Start Monitoring</h5>
+                        <p>We begin watching your reviews 24/7 immediately</p>
+                        <div class="loader mt-3"></div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h5>You Get Alerts</h5>
+                        <p>We send you instant alerts when needed</p>
+                        <div class="loader mt-3"></div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h5>Your Business Grows</h5>
+                        <p>Better reviews mean more customers and sales</p>
+                        <div class="loader mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-5">What We Do For You</h2>
+                <p class="lead text-muted">Simple, powerful review management that works 24/7</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>24/7 Review Monitoring</h4>
+                        <p>We watch all your review platforms 24 hours a day, 7 days a week</p>
+                        <p class="text-muted small">Never miss a customer comment - day or night</p>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="24/7 Monitoring" class="feature-image">
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Competitor Tracking</h4>
+                        <p>We keep an eye on your competitors and tell you what they're doing</p>
+                        <p class="text-muted small">Know what your competitors are up to - always</p>
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Competitor Tracking" class="feature-image">
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Smart Alerts</h4>
+                        <p>We send you instant alerts when something needs your attention</p>
+                        <p class="text-muted small">Get notified immediately - no more surprises</p>
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                             alt="Smart Alerts" class="feature-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <div class="logo mb-4">
+                    <i class="fas fa-tie"></i>
+                    <img src="photo.png" alt="Logo" style="height: 50px; margin-left: 10px;">
+                </div>
+                <h2 class="display-4 mb-4">Ready to Let Us Handle Your Reviews?</h2>
+                
+                <div class="row justify-content-center mb-4">
+                    <div class="col-md-3">
+                        <div class="feature-card bg-transparent text-white">
+                            <h5><i class="fas fa-clock me-2"></i>24/7 Monitoring</h5>
+                            <p>We never sleep so you can</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="feature-card bg-transparent text-white">
+                            <h5><i class="fas fa-shield-alt me-2"></i>Fast Set Up</h5>
+                            <p>So that it doesnt effect your work</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="feature-card bg-transparent text-white">
+                            <h5><i class="fas fa-headset me-2"></i>Always Available</h5>
+                            <p>Support when you need it</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <button class="btn btn-outline-light btn-lg">Schedule Demo</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p class="mt-2">&copy; 2024. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add loading animation to buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Loading...';
+                this.disabled = true;
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                }, 2000);
+            });
+        });
+        </script>
+       <script>
+  function submitToSheet(e) {
+    e.preventDefault();
+    const form = document.getElementById('demoForm');
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    fetch("https://script.google.com/macros/s/AKfycbz-Uvf_HwqynOByIu6nnpa9inXAo5ndlMoOI_j4o3ovCMI74nGoHUAgd2yWvqEzENzy5g/exec", {
+      method: "POST",
+      body: JSON.stringify(data)
+    }).then(res => {
+      alert("✅ Demo booked! You'll hear from us shortly.");
+      form.reset();
+    }).catch(err => alert("❌ Error: " + err));
+  }
+</script>
+
+
+
+   </body>
+   </html>
