@@ -699,14 +699,17 @@
             });
         });
         </script>
-       <script>
+<script>
   function submitToSheet(e) {
     e.preventDefault();
     const form = document.getElementById('demoForm');
     const data = Object.fromEntries(new FormData(form).entries());
 
-    fetch("https://script.google.com/macros/s/AKfycbz-Uvf_HwqynOByIu6nnpa9inXAo5ndlMoOI_j4o3ovCMI74nGoHUAgd2yWvqEzENzy5g/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbw-W4vxSaYO_Y3Gjg9mqzjBNKucfUPMt6Wc9mg9iEdL9ZVy_pIZB-Vk4X3RSw6RPgV6Kw/exec", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(data)
     }).then(res => {
       alert("✅ Demo booked! You'll hear from us shortly.");
@@ -714,6 +717,7 @@
     }).catch(err => alert("❌ Error: " + err));
   }
 </script>
+
 
 
 
