@@ -684,19 +684,20 @@
             });
         });
 
-        // Add loading animation to buttons
-        document.querySelectorAll('button').forEach(button => {
-            button.addEventListener('click', function() {
-                const originalText = this.innerHTML;
-                this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Loading...';
-                this.disabled = true;
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.disabled = false;
-                }, 2000);
-            });
-        });
+        // Add loading animation to buttons EXCEPT form submit
+document.querySelectorAll('button:not([type="submit"])').forEach(button => {
+  button.addEventListener('click', function () {
+    const originalText = this.innerHTML;
+    this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Loading...';
+    this.disabled = true;
+
+    setTimeout(() => {
+      this.innerHTML = originalText;
+      this.disabled = false;
+    }, 2000);
+  });
+});
+
         </script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
