@@ -495,22 +495,19 @@
       <h2 class="text-center mb-4">Book Your Demo </h2>
       
       <form id="demoForm" onsubmit="submitToSheet(event)" class="mx-auto" style="max-width: 600px;">
+  <input type="text" name="name" class="form-control" placeholder="Your Name" autocomplete="name" required />
+  <input type="email" name="email" class="form-control" placeholder="Your Email" autocomplete="email" required />
+  <input type="text" name="whatsapp" class="form-control" placeholder="WhatsApp Number" autocomplete="tel" />
+  <input type="url" name="product" class="form-control" placeholder="Product Link" autocomplete="url" />
+  <label class="mt-3 mb-2">Which service are you interested in?</label>
+  <select name="tier" class="form-control mb-3" autocomplete="off" required>
+    <option value="Starter">Starter (₹299 / $4.99)</option>
+    <option value="Professional">Professional (₹499 / $8.99)</option>
+    <option value="Enterprise">Enterprise (₹999 / $16.99)</option>
+  </select>
+  <button type="submit" class="btn btn-dark btn-lg w-100">Submit</button>
+</form>
 
-        <input type="text" name="name" class="form-control" placeholder="Your Name" required />
-        <input type="email" name="email" class="form-control" placeholder="Your Email" required />
-        <input type="text" name="whatsapp" class="form-control" placeholder="WhatsApp Number (optional)" />
-        <input type="url" name="product" class="form-control" placeholder="Product Link (Amazon, Etsy, etc.)" />
-
-        <label class="mt-3 mb-2">Which service are you interested in?</label>
-        <select name="tier" class="form-control mb-3" required>
-          <option value="Starter">Starter (₹299 / $4.99)</option>
-          <option value="Professional">Professional (₹499 / $8.99)</option>
-          <option value="Enterprise">Enterprise (₹999 / $16.99)</option>
-        </select>
-
-        
-        <button type="submit" class="btn btn-dark btn-lg w-100">Submit</button>
-      </form>
       
     </div>
   </section>
@@ -711,12 +708,16 @@
         "Content-Type": "application/json"
       },
       body: JSON.stringify(data)
-    }).then(res => {
-      alert("✅ Demo booked! You'll hear from us shortly.");
+    })
+    .then(res => res.text())
+    .then(msg => {
+      alert("✅ Demo booked! You’ll hear from us shortly.");
       form.reset();
-    }).catch(err => alert("❌ Error: " + err));
+    })
+    .catch(err => alert("❌ Error: " + err.message));
   }
 </script>
+
 
 
 
