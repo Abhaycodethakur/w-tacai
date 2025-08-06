@@ -16,20 +16,17 @@
             --text-dark: #2C1810;
             --text-light: #F5F5DC;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
         }
-
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--dark-brown) 0%, var(--primary-brown) 100%);
@@ -39,7 +36,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -51,12 +47,10 @@
             background-size: cover;
             opacity: 0.3;
         }
-
         .hero-content {
             position: relative;
             z-index: 2;
         }
-
         .logo {
             font-size: 3rem;
             font-weight: bold;
@@ -66,36 +60,29 @@
             align-items: center;
             justify-content: center;
         }
-
         .logo i {
             margin-right: 0.5rem;
             color: var(--accent);
         }
-
         .tagline {
             color: var(--light-brown);
             font-size: 1.2rem;
             margin-bottom: 2rem;
         }
-
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
-
         @keyframes floating {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
         }
-
         .slide-in {
             animation: slideIn 1s ease-out;
         }
-
         @keyframes slideIn {
             from { opacity: 0; transform: translateX(-50px); }
             to { opacity: 1; transform: translateX(0); }
         }
-
         /* Feature Cards */
         .feature-card {
             background: white;
@@ -107,7 +94,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .feature-card::before {
             content: '';
             position: absolute;
@@ -117,12 +103,10 @@
             height: 4px;
             background: var(--accent);
         }
-
         .feature-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(139, 69, 19, 0.2);
         }
-
         .feature-icon {
             width: 60px;
             height: 60px;
@@ -135,7 +119,6 @@
             color: white;
             font-size: 1.5rem;
         }
-
         /* Pricing Cards */
         .pricing-card {
             background: white;
@@ -147,12 +130,10 @@
             overflow: hidden;
             height: 100%;
         }
-
         .pricing-card.most-popular {
             border: 2px solid var(--accent);
             transform: scale(1.05);
         }
-
         .pricing-card.most-popular::before {
             content: 'MOST POPULAR';
             position: absolute;
@@ -165,24 +146,20 @@
             font-weight: bold;
             transform: rotate(45deg);
         }
-
         .price {
             font-size: 3rem;
             font-weight: bold;
             color: var(--primary-brown);
         }
-
         .price span {
             font-size: 1rem;
             color: var(--text-dark);
         }
-
         /* How It Works */
         .process-step {
             text-align: center;
             padding: 2rem;
         }
-
         .step-number {
             width: 50px;
             height: 50px;
@@ -196,14 +173,12 @@
             font-weight: bold;
             margin: 0 auto 1rem;
         }
-
         /* CTA Section */
         .cta {
             background: linear-gradient(135deg, var(--dark-brown) 0%, var(--primary-brown) 100%);
             padding: 5rem 0;
             color: white;
         }
-
         /* Responsive */
         @media (max-width: 768px) {
             .hero {
@@ -218,7 +193,6 @@
                 transform: scale(1);
             }
         }
-
         /* Loading Animation */
         .loader {
             width: 40px;
@@ -229,12 +203,10 @@
             animation: spin 1s linear infinite;
             margin: 0 auto;
         }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
         /* Image Styling */
         .hero-image {
             max-width: 100%;
@@ -242,7 +214,6 @@
             border-radius: 10px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
-
         .feature-image {
             width: 100%;
             height: 200px;
@@ -250,22 +221,18 @@
             border-radius: 10px;
             margin-bottom: 1rem;
         }
-
         /* Benefit List */
         .benefit-list {
             list-style: none;
             padding: 0;
         }
-
         .benefit-list li {
             padding: 0.5rem 0;
             border-bottom: 1px solid #f0f0f0;
         }
-
         .benefit-list li:last-child {
             border-bottom: none;
         }
-
         .benefit-list li i {
             color: var(--accent);
             margin-right: 0.5rem;
@@ -274,8 +241,6 @@
       font-family: 'Segoe UI', sans-serif;
       overflow-x: hidden;
     }
-
-
     .hero {
       background: linear-gradient(135deg, #5D2F0A, #8B4513);
       color: white;
@@ -298,11 +263,20 @@
       font-size: 0.8rem;
       color: #888;
     }
+    /* Success Message Styling */
+    .success-message {
+        display: none;
+        background-color: #d4edda;
+        color: #155724;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+        text-align: center;
+    }
   
     </style>
 </head>
 <body>
-
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: rgba(93, 47, 10, 0.95); backdrop-filter: blur(10px);">
         <div class="container">
@@ -333,7 +307,6 @@
             </div>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
@@ -352,7 +325,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 text-center" data-aos="fade-left">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://picsum.photos/seed/reviewmonitoring/800/600.jpg" 
                          alt="Review Monitoring" 
                          class="hero-image floating">
                 </div>
@@ -360,7 +333,6 @@
         </div>
     </section>
     
-
     <!-- Pricing Section -->
 <section id="pricing" class="py-5">
     <div class="container">
@@ -368,7 +340,6 @@
             <h2 class="display-5">Choose Your Plan</h2>
             <p class="lead text-muted">Simple pricing for businesses of all sizes</p>
         </div>
-
         <div class="row g-4">
             <!-- Starter Plan -->
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
@@ -394,7 +365,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Professional Plan -->
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="pricing-card">
@@ -419,7 +389,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Enterprise Plan (MOST POPULAR) -->
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="pricing-card most-popular">
@@ -448,74 +417,32 @@
     </div>
 </section>
  
-
-      <div class="row g-4 mt-4">
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Starter</h5>
-              <p class="card-text">Basic monitoring, instant alerts, and daily summaries.</p>
-              <button class="btn btn-outline-primary launch-btn" onclick="document.getElementById('demo-booking').scrollIntoView({behavior: 'smooth'})">
-                Book Demo
-                <small>Launches Aug 6</small>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title">Professional</h5>
-              <p class="card-text">Includes competitor tracking and strategy suggestions.</p>
-              <button class="btn btn-outline-secondary launch-btn" onclick="document.getElementById('demo-booking').scrollIntoView({behavior: 'smooth'})">
-                Book Demo
-                <small>Launches Aug 7</small>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 border border-warning">
-            <div class="card-body">
-              <h5 class="card-title">Enterprise <span class="badge bg-warning text-dark">Most Powerful</span></h5>
-              <p class="card-text">Advanced AI + content creation + API access and branding.</p>
-              <button class="btn btn-warning text-white launch-btn" onclick="document.getElementById('demo-booking').scrollIntoView({behavior: 'smooth'})">
-                Book Demo
-                <small>Launches Aug 8</small>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-<!-- Demo Booking Form -->
+    <!-- Demo Booking Form -->
   <section id="demo-booking" class="py-5 bg-light">
     <div class="container">
       <h2 class="text-center mb-4">Book Your Demo </h2>
       
-     <form id="demoForm" class="mx-auto" style="max-width: 600px;">
-  <input type="text" name="name" class="form-control" placeholder="Your Name" autocomplete="name" required />
-  <input type="email" name="email" class="form-control" placeholder="Your Email" autocomplete="email" required />
-  <input type="text" name="whatsapp" class="form-control" placeholder="WhatsApp Number" autocomplete="tel" />
-  <input type="url" name="product" class="form-control" placeholder="Product Link" autocomplete="url" />
-
-  <label class="mt-3 mb-2">Which service are you interested in?</label>
-  <select name="tier" class="form-control mb-3" autocomplete="off" required>
-    <option value="Starter">Starter</option>
-    <option value="Professional">Professional</option>
-    <option value="Enterprise">Enterprise</option>
-  </select>
-
-  <button type="submit" class="btn btn-dark btn-lg w-100">Submit</button>
-</form>
-
+      <!-- Using Formspree for free form handling -->
+      <form id="demoForm" class="mx-auto" style="max-width: 600px;" action="https://formspree.io/f/movlkzde" method="POST">
+        <input type="text" name="name" class="form-control" placeholder="Your Name" autocomplete="name" required />
+        <input type="email" name="email" class="form-control" placeholder="Your Email" autocomplete="email" required />
+        <input type="text" name="whatsapp" class="form-control" placeholder="WhatsApp Number" autocomplete="tel" />
+        <input type="url" name="product" class="form-control" placeholder="Product Link" autocomplete="url" />
+        <label class="mt-3 mb-2">Which service are you interested in?</label>
+        <select name="tier" class="form-control mb-3" autocomplete="off" required>
+          <option value="Starter">Starter</option>
+          <option value="Professional">Professional</option>
+          <option value="Enterprise">Enterprise</option>
+        </select>
+        <button type="submit" class="btn btn-dark btn-lg w-100">Submit</button>
+      </form>
+      
+      <div id="successMessage" class="success-message">
+        <i class="fas fa-check-circle me-2"></i>Thank you for your submission! We'll contact you soon.
+      </div>
       
     </div>
   </section>
-
-
-
     <!-- How It Works -->
     <section id="how-it-works" class="py-5 bg-light">
         <div class="container">
@@ -523,7 +450,6 @@
                 <h2 class="display-5">How It Works</h2>
                 <p class="lead text-muted">Simple setup, powerful results in minutes</p>
             </div>
-
             <div class="row">
                 <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
                     <div class="process-step">
@@ -560,7 +486,6 @@
             </div>
         </div>
     </section>
-
     <!-- Features Section -->
     <section id="features" class="py-5">
         <div class="container">
@@ -568,7 +493,6 @@
                 <h2 class="display-5">What We Do For You</h2>
                 <p class="lead text-muted">Simple, powerful review management that works 24/7</p>
             </div>
-
             <div class="row g-4">
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="feature-card">
@@ -578,7 +502,7 @@
                         <h4>24/7 Review Monitoring</h4>
                         <p>We watch all your review platforms 24 hours a day, 7 days a week</p>
                         <p class="text-muted small">Never miss a customer comment - day or night</p>
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                        <img src="https://picsum.photos/seed/monitoring/400/200.jpg" 
                              alt="24/7 Monitoring" class="feature-image">
                     </div>
                 </div>
@@ -590,7 +514,7 @@
                         <h4>Competitor Tracking</h4>
                         <p>We keep an eye on your competitors and tell you what they're doing</p>
                         <p class="text-muted small">Know what your competitors are up to - always</p>
-                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                        <img src="https://picsum.photos/seed/competitors/400/200.jpg" 
                              alt="Competitor Tracking" class="feature-image">
                     </div>
                 </div>
@@ -602,14 +526,13 @@
                         <h4>Smart Alerts</h4>
                         <p>We send you instant alerts when something needs your attention</p>
                         <p class="text-muted small">Get notified immediately - no more surprises</p>
-                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                        <img src="https://picsum.photos/seed/alerts/400/200.jpg" 
                              alt="Smart Alerts" class="feature-image">
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- CTA Section -->
     <section id="cta" class="cta">
         <div class="container">
@@ -646,7 +569,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer class="bg-dark text-white py-4">
         <div class="container">
@@ -663,7 +585,6 @@
             </div>
         </div>
     </footer>
-
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -673,70 +594,91 @@
             duration: 1000,
             once: true
         });
-
+        
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
-
+        
         // Add loading animation to buttons EXCEPT form submit
-document.querySelectorAll('button:not([type="submit"])').forEach(button => {
-  button.addEventListener('click', function () {
-    const originalText = this.innerHTML;
-    this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Loading...';
-    this.disabled = true;
+        document.querySelectorAll('button:not([type="submit"])').forEach(button => {
+            button.addEventListener('click', function () {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Loading...';
+                this.disabled = true;
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                }, 2000);
+            });
+        });
+    </script>
+    
+    <!-- Formspree form handling -->
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+            // Get the form element
+            var form = document.getElementById("demoForm");
+            
+            // Add submit event listener
+            if (form) {
+                form.addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    
+                    // Show loading state on submit button
+                    var submitButton = form.querySelector('button[type="submit"]');
+                    var originalText = submitButton.innerHTML;
+                    submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Submitting...';
+                    submitButton.disabled = true;
+                    
+                    // Submit the form using Formspree
+                    var data = new FormData(form);
+                    
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: data,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            throw new Error('Network response was not ok.');
+                        }
+                    })
+                    .then(data => {
+                        // Show success message
+                        document.getElementById("successMessage").style.display = "block";
+                        form.reset();
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(function() {
+                            document.getElementById("successMessage").style.display = "none";
+                        }, 5000);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was a problem with your submission. Please try again.');
+                    })
+                    .finally(() => {
+                        // Reset button state
+                        submitButton.innerHTML = originalText;
+                        submitButton.disabled = false;
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
 
-    setTimeout(() => {
-      this.innerHTML = originalText;
-      this.disabled = false;
-    }, 2000);
-  });
-});
-
-        </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("demoForm");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    console.log("🚀 Form submitted!");
-
-    const data = Object.fromEntries(new FormData(form).entries());
-
-    fetch("https://script.google.com/macros/s/AKfycbwfJNPX5GVQfM7_Hew_KXrpiXvQJ2DMSqOatehy8GkFZmtMsteuokeQo4ladltRSgCn/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-    .then(res => res.text())
-    .then(msg => {
-      console.log("✅ Server response:", msg);
-      alert("✅ Demo booked!");
-      form.reset();
-    })
-    .catch(err => {
-      console.error("❌ Submission error:", err);
-      alert("❌ Something went wrong.");
-    });
-  });
-});
-</script>
-
-<script>
-  console.log("🔥 JS is connected and running");
-</script>
-
-
-
-
-   </body>
-   </html>
